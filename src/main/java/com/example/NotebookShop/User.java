@@ -1,4 +1,4 @@
-package com.example.NotebookShop;
+package com.example.Notebookshop;
 import javax.persistence.*;
 import java.util.List;
 
