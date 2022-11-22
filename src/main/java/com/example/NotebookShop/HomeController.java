@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class HomeController {
+
     @GetMapping("/")
     public String home() {
 
@@ -28,6 +30,18 @@ public class HomeController {
     public String admin() {
 
         return "admin";
+    }
+
+    @GetMapping("/regisztral")
+    public String greetingForm(Model model) {
+        model.addAttribute("reg", new User());
+        return "regisztral";
+    }
+
+    @GetMapping("/contact")
+    public String Contact(Model model) {
+        model.addAttribute("uzenetek", new Uzenetek());
+        return "contact";
     }
 
     @GetMapping("/gepek")
@@ -51,16 +65,6 @@ public class HomeController {
         return "gepek";
     }
 
-
-
-
-
-    @GetMapping("/regisztral")
-    public String greetingForm(Model model) {
-        model.addAttribute("reg", new User());
-        return "regisztral";
-    }
-
     @Autowired
     private UserRepository userRepo;
 
@@ -69,6 +73,9 @@ public class HomeController {
 
     @Autowired
     private ProcesszorRepo processzorRepo;
+
+    @Autowired
+    private UzenetRepository uzenetRepo;
 
 
     @PostMapping("/beregisztral")
@@ -90,6 +97,16 @@ public class HomeController {
         model.addAttribute("id", user.getId());
         return "sikeresreg";
     }
+
+
+
+    @PostMapping(value = "/uzenetkuld")
+    public String Üzenetküldés(@ModelAttribute Uzenetek uzenet , Uzenetek targy) {
+        uzenetRepo.save(targy);
+        uzenetRepo.save(uzenet);
+        return "contactjo";
+    }
+
 
     String gyart(){
         String gyarto="";
