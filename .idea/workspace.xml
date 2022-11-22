@@ -13,9 +13,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -53,15 +53,18 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Suli/5. félév/Mentes/Regisztráció és bejelentkezés",
+    "last_opened_file_path": "C:/Users/Attila/IdeaProjects/Regisztráció és bejelentkezés",
     "settings.editor.selected.configurable": "vcs.Perforce",
     "spring.configuration.checksum": "fe01ce2a7fbac8fafaed7c982a04e229"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="demo" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.NotebookShop.SecurityRoleApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.Notebookshop.NotebookshopApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -90,8 +93,8 @@
       <workItem from="1668709968844" duration="9848000" />
       <workItem from="1668875431475" duration="2796000" />
       <workItem from="1668950139125" duration="9519000" />
-      <workItem from="1668960123683" duration="8450000" />
-      <workItem from="1668971960330" duration="610000" />
+      <workItem from="1668960123683" duration="12686000" />
+      <workItem from="1669047754564" duration="10000000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,4 @@
-package com.example.NotebookShop;
+package com.example.Notebookshop;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,34 +14,63 @@ import java.util.List;
 public class HomeController {
     @GetMapping("/")
     public String home() {
+
         return "index";
     }
 
     @GetMapping("/home")
     public String user(Model model) {
+
         return "user";
     }
 
     @GetMapping("/admin/home")
     public String admin() {
+
         return "admin";
     }
+
+    @GetMapping("/gepek")
+    public String gepek(Model model, String adatok) {
+
+        String gyarto = gyart();
+        model.addAttribute("gyarto", gyarto);
+
+        String memoria = memoriameret();
+        model.addAttribute("memoria", memoria);
+
+        String hdd = hddmeret();
+        model.addAttribute("hdd", hdd);
+
+        String vga = videokartyak();
+        model.addAttribute("vga", vga);
+
+        String ara = price();
+        model.addAttribute("ara", ara);
+
+        return "gepek";
+    }
+
+
+
 
 
     @GetMapping("/regisztral")
     public String greetingForm(Model model) {
         model.addAttribute("reg", new User());
         return "regisztral";
-
-    }
-
-    @RequestMapping("/login.html")
-    public String login() {
-        return "/login.html";
     }
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private GepRepo gepRepo;
+
+    @Autowired
+    private ProcesszorRepo processzorRepo;
+
+
     @PostMapping("/beregisztral")
     public String Regisztráció(@ModelAttribute User user, Model model) {
         for(User felhasznalo2: userRepo.findAll())
@@ -62,4 +90,66 @@ public class HomeController {
         model.addAttribute("id", user.getId());
         return "sikeresreg";
     }
+
+    String gyart(){
+        String gyarto="";
+        for(Gep gepek: gepRepo.findAll()){
+            gyarto+=gepek.getGyarto() +" "+gepek.getTipus();
+            gyarto+="<br>";
+        }
+        return gyarto;
+    }
+    String memoriameret(){
+        String memoria="";
+        for(Gep gepek: gepRepo.findAll()){
+            memoria+=gepek.getMemoria()+" MB";
+            memoria+="<br>";
+        }
+        return memoria;
+    }
+    String hddmeret(){
+        String hdd ="";
+        for(Gep gepek: gepRepo.findAll()){
+            hdd+=gepek.getMerevlemez()+" GB";
+            hdd+="<br>";
+        }
+        return hdd;
+    }
+
+    String videokartyak(){
+        String vga="";
+        for(Gep gepek: gepRepo.findAll()){
+            vga+=gepek.getVideovezerlo();
+            vga+="<br>";
+        }
+        return vga;
+    }
+    String price(){
+        String ara="";
+        for(Gep gepek: gepRepo.findAll()){
+            ara+=gepek.getAr()+" Ft";
+            ara+="<br>";
+        }
+        return ara;
+    }
+
+    String cpuk(){
+        String procik="";
+        String az ="";
+        for(Gep gepek: gepRepo.findAll()){
+            procik+=gepek.getGyarto()+" "+gepek.getTipus()+gepek.getId();
+            az+= gepek.getId();
+            for(Processzor processzorok: processzorRepo.findAll()){
+                if(procik.contains("az"))
+                {
+
+                }
+            }
+
+        }
+
+        return procik;
+    }
+
+
 }
