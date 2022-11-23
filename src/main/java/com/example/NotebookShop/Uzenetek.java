@@ -11,15 +11,15 @@ public class Uzenetek {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    @NotNull
-    @Size(min = 10, max = 500)
 
-    private String uzenet;
+    @NotNull
+    @Size(min = 3, max = 500)
+   private String uzenet;
 
     @NotNull
     @Size(min = 1, max = 20)
-    private String targy;
 
+    private String targy;
 
     public String getTargy() {
         return targy;
