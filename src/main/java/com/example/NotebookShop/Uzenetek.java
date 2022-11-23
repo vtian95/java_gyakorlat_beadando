@@ -1,14 +1,23 @@
 package com.example.Notebookshop;
-import javax.persistence.*;
+import com.sun.istack.NotNull;
 
+import javax.persistence.*;
+import javax.validation.constraints.Size;
+import com.sun.istack.NotNull;
+import javax.validation.constraints.Size;
 @Entity
 public class Uzenetek {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
+    @NotNull
+    @Size(min = 10, max = 500)
 
     private String uzenet;
 
+    @NotNull
+    @Size(min = 1, max = 20)
     private String targy;
 
 
