@@ -19,6 +19,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
@@ -54,7 +57,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_directory_selection": "C:/Users/Attila/IdeaProjects/Regisztráció és bejelentkezés/src/test/java",
-    "last_opened_file_path": "C:/Users/Attila/IdeaProjects/Validáció és űrlap",
+    "last_opened_file_path": "C:/Users/Attila/IdeaProjects/Regisztráció és bejelentkezés",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "vcs.Perforce",
     "spring.configuration.checksum": "fe01ce2a7fbac8fafaed7c982a04e229"
   }
@@ -103,10 +109,22 @@
       <workItem from="1669212101744" duration="272000" />
       <workItem from="1669212383542" duration="32000" />
       <workItem from="1669212511858" duration="9428000" />
+      <workItem from="1669224228404" duration="436000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
