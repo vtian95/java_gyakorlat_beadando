@@ -22,6 +22,12 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/hiba")
+    public String hiba() {
+
+        return "hiba";
+    }
+
     @GetMapping("/home")
     public String user(Model model) {
 
@@ -114,9 +120,10 @@ public class HomeController {
 
 
     @PostMapping(value = "/uzenetkuld")
-    public String Üzenetküldés(@Valid @ModelAttribute Validation validation, Uzenetek uzenet , BindingResult bindingResult, Uzenetek targy , Model model) {
-        if(bindingResult.hasErrors())
-            return "contact";
+    public String Üzenetküldés(@Valid @ModelAttribute Validation validation, Uzenetek uzenet , Uzenetek targy) {
+        if (uzenet.getUzenet().length() < 10 || uzenet.getTargy().length() < 5){
+            return "hiba";
+        }
         uzenetRepo.save(targy);
         uzenetRepo.save(uzenet);
         return "contactjo";
