@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
-  <title>Üzenetküldő</title>
+  <title>Beérkezett üzenetek</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,32 +22,29 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
           integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
           crossorigin="anonymous"></script>
-
 </head>
-
 <body>
 <div th:insert="menu"></div>
 
+<div class="row">
+  <div class="col">
+    <div class="jumbotron text-center">
 
-<div class="col">
-  <div class="jumbotron text-center">
-    <h4 class="pb-3">Itt tudsz üzenetet küldeni az oldal tulajdonosának:</h4>
-<div class="card">
-
-    <form action th:action="@{/uzenetkuld}" th:object="${uzenetek}" method="post">
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Üzeneted tárgya</label>
-      <input type="text" th:field="*{targy}" class="form-control" id="exampleFormControlInput1" placeholder="kérjük ide írd az üzeneted tárgyát..." required>
-        <p th:if="${#fields.hasErrors('targy')}" th:errors="*{targy}"></p>
-    </div>
-
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label" >Üzeneted szövege</label>
-      <textarea class="form-control" th:field="*{uzenet}" id="exampleFormControlTextarea1" rows="3" placeholder="ide már jöhet is a nekünk szánt üzenet..." required></textarea>
-        <p th:if="${#fields.hasErrors('uzenet')}" th:errors="*{uzenet}"></p>
-       </div>
-      <button type="submit" class="btn btn-primary">Küldés</button>
-    </form>
+      <h4 class="pb-3">A következő üzenetek küldték a tulajdonos számára:</h4>
+      <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Üzenet tárgya</th>
+          <th scope="col">Üzenet szövege</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td th:utext="${targy}"></td>
+          <td th:utext="${uzenet}"></td>
+        </tr>
+        </tbody>
+      </table>
 
     </div>
   </div>

@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import javax.validation.Valid;
+import javax.validation.Validation;
 
+import org.springframework.validation.BindingResult;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +47,7 @@ public class HomeController {
     }
 
     @GetMapping("/gepek")
-    public String gepek(Model model, String adatok) {
+    public String gepek(Model model) {
 
         String gyarto = gyart();
         model.addAttribute("gyarto", gyarto);
@@ -63,6 +65,17 @@ public class HomeController {
         model.addAttribute("ara", ara);
 
         return "gepek";
+    }
+
+    @GetMapping("/admin/messages")
+    public String uzik(Model model) {
+        String targy = targyolvas();
+        model.addAttribute("targy",targy);
+
+        String uzenet = uzenetolvas();
+        model.addAttribute("uzenet", uzenet);
+
+        return "messages";
     }
 
     @Autowired
@@ -101,11 +114,14 @@ public class HomeController {
 
 
     @PostMapping(value = "/uzenetkuld")
-    public String Üzenetküldés(@ModelAttribute Uzenetek uzenet , Uzenetek targy) {
+    public String Üzenetküldés(@Valid @ModelAttribute Validation validation, Uzenetek uzenet , BindingResult bindingResult, Uzenetek targy , Model model) {
+        if(bindingResult.hasErrors())
+            return "contact";
         uzenetRepo.save(targy);
         uzenetRepo.save(uzenet);
         return "contactjo";
     }
+
 
 
     String gyart(){
@@ -167,6 +183,27 @@ public class HomeController {
 
         return procik;
     }
+
+    String targyolvas(){
+        String targy="";
+        for(Uzenetek uzenetek: uzenetRepo.findAll()){
+            targy+= uzenetek.getTargy();
+            targy+="<br>";
+        }
+        return targy;
+
+    }
+
+    String uzenetolvas(){
+        String targy="";
+        for(Uzenetek uzenetek: uzenetRepo.findAll()){
+            targy+= uzenetek.getUzenet();
+            targy+="<br>";
+        }
+        return targy;
+
+    }
+
 
 
 }
