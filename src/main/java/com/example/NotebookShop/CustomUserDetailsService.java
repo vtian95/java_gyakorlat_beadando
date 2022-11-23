@@ -18,11 +18,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepo.findByEmail(userName)
                 .orElseThrow(() -> new UsernameNotFoundException("Az email címed és  " + userName + " neved nem található"));
-// Egy új User-t (Security) hoz létre.
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 getAuthorities(user));
     }
-    // A kiválasztott felhasználó szerepeinek lekérdezése:
     private static Collection<? extends GrantedAuthority> getAuthorities(User user) {
         String[] userRoles = user.getRoles().stream().map((role) -> role.getName()).toArray(String[]::new);
         Collection<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
