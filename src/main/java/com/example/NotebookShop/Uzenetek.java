@@ -1,10 +1,9 @@
-package com.example.Notebookshop;
+package com.example.NotebookShop;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import com.sun.istack.NotNull;
-import javax.validation.constraints.Size;
+
 @Entity
 public class Uzenetek {
     @Id

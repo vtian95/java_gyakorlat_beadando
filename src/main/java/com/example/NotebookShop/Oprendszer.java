@@ -1,4 +1,4 @@
-package com.example.Notebookshop;
+package com.example.NotebookShop;
 import javax.persistence.*;
 
 

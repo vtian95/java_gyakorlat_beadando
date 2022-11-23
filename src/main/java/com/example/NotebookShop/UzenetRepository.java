@@ -1,5 +1,4 @@
-package com.example.Notebookshop;
-import java.util.Optional;
+package com.example.NotebookShop;
 import org.springframework.data.repository.CrudRepository;
 public interface UzenetRepository extends CrudRepository<Uzenetek, Integer>
 {

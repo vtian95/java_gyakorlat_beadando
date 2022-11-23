@@ -1,4 +1,4 @@
-package com.example.Notebookshop;
+package com.example.NotebookShop;
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

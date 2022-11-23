@@ -1,4 +1,4 @@
-package com.example.Notebookshop;
+package com.example.NotebookShop;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 public interface UserRepository extends CrudRepository<User, Integer>
